@@ -19,17 +19,12 @@ const signUpUser = async (req, res, next)=>{
 }
 
 const loginUser = async(req, res, next)=>{
-    console.log("current user:", req.currentUser[0]);
-    console.log("current user's password: ", req.currentUser[0].password);
-    console.log("request body: ", req.body.password);
     try{
         let compare = await bcrypt.compare(req.body.password, req.currentUser[0].password);
-        console.log("result: ", compare);
         if(!compare){
             return sendError(new AppError(401, "Unsuccessful", "Incorrect Password"),req, res);
         }
         let jwtToken = await getToken({ email: req.currentUser[0].email }, process.env.JWT_SECRET, { expiresIn: "1d"} );
-        console.log("jwt token: ", jwtToken);
         res.cookie("jwt", jwtToken); 
         sendResponse(200, "Successful", [{jwt: jwtToken}], req, res);
 

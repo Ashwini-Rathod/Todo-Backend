@@ -40,7 +40,6 @@ const checkReqBody = (req, res, next)=>{
 }
 const isEmailUnique = async (req, res, next)=>{
     let user = await User.findOne({email : req.body.email});
-    console.log("user: ", user);
     if(user){
         return sendError(new AppError(401, "Unsuccessful", "User already exists"), req, res);
     }

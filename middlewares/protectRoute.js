@@ -16,7 +16,6 @@ const protectRoute = async (req, res, next)=>{
     }
     //if headers are present
   let jwtToken = req.headers.authorization.split(" ")[1];
-  console.log("jwt token: ",jwtToken)
   let decoded;
   try {
         decoded = await verifyToken(jwtToken, process.env.JWT_SECRET);
@@ -31,7 +30,6 @@ const protectRoute = async (req, res, next)=>{
   }
   try{
     let {email : currentUser} = await User.findOne({email: decoded.email});
-    console.log({email: currentUser});
     if (!currentUser) {
       return sendError(
         new AppError(401, "Unsuccesssul", "Please login or signup"),

@@ -32,7 +32,6 @@ const getAllTasks = async (req, res, next)=>{
             sendResponse(200, "Successful", [tasks], req, res);
         }
     }catch(err){
-        console.log(err);
         return sendError(new AppError(401, "Unsuccessful", "Invalid request"), req, res);
     }
 }
