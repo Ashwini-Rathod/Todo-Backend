@@ -1,6 +1,6 @@
 # Todo-Backend
 
-This project is about creating express api for a to do application. The application provides end points for the following CRUD operation:
+This project is about creating express api for a to do application. The git repository contains all the files that are used for setting up the express server. The user can start the execution by 'npm run start'. The application provides end points for the following CRUD operation:
 
 # Create a task:
 
