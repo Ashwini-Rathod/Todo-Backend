@@ -21,6 +21,6 @@ mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true , useNewUr
     console.log("Successfully connected to the database");       
 })
 
-app.listen(3000, ()=>{
+app.listen(4000, ()=>{
     console.log("Listening to the port 3000");
 })
